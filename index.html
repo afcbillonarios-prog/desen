@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page - Modelo de Crédito Agropecuario</title>
+    <meta name="description" content="Proyecto de Machine Learning para predecir el valor de créditos de fomento agropecuario aplicando CRISP-ML.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d6a4f;
+            --secondary: #1b4332;
+            --accent: #52b788;
+            --bg: #f8f9fa;
+            --text: #212529;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 1rem auto;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(82, 183, 136, 0.05);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--light);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--secondary);
+            color: var(--light);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Crédito de Fomento Agropecuario</h1>
+        <p>Aplicación del Ciclo de Vida del Machine Learning (CRISP-ML) para la predicción inteligente del valor de desembolsos crediticios.</p>
+        <a href="#detalles" class="btn">Conocer el Modelo</a>
+    </header>
+
+    <div class="container" id="detalles">
+        
+        <section>
+            <h2>Identificación del Problema</h2>
+            <p>El acceso al financiamiento es crucial para el desarrollo del sector agropecuario. Sin embargo, determinar el monto ideal del crédito (<strong>valor de crédito</strong>) que se debe desembolsar a un productor dependiendo de las condiciones financieras de la solicitud (plazos, cuotas, tasas) es un desafío. El problema radica en estandarizar y predecir este valor basándose en el comportamiento histórico de los desembolsos.</p>
+        </section>
+
+        <section>
+            <h2>Propósitos y Objetivos</h2>
+            <ul>
+                <li><strong>Objetivo General:</strong> Desarrollar un modelo de Machine Learning capaz de predecir el valor del crédito agropecuario utilizando la metodología CRISP-ML(Q).</li>
+                <li><strong>Propósitos Específicos:</strong>
+                    <ul>
+                        <li>Realizar un proceso de ETL estructurado para limpiar los datos históricos.</li>
+                        <li>Ejecutar un EDA para encontrar relaciones clave entre las variables.</li>
+                        <li>Entrenar y evaluar un modelo de <strong>Regresión Lineal</strong>.</li>
+                        <li>Desplegar el modelo de forma interactiva usando Streamlit.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Tabla de Datos y Variables</h2>
+            <p>El modelo utiliza las siguientes variables predictoras extraídas de la muestra del conjunto de datos original:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Tipo</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>plazo</strong></td>
+                        <td>Numérico</td>
+                        <td>Plazo total del crédito en meses.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>periodo_gracia</strong></td>
+                        <td>Numérico</td>
+                        <td>Meses de gracia otorgados antes de iniciar el pago a capital.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>cuotas</strong></td>
+                        <td>Numérico</td>
+                        <td>Número total de cuotas pactadas.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>cuotas_capital</strong></td>
+                        <td>Numérico</td>
+                        <td>Número de cuotas destinadas exclusivamente a abonar capital.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>tasa_indexacion</strong></td>
+                        <td>Categórico</td>
+                        <td>Indicador de la tasa base (ej. IBR, DTF). Se aplica One-Hot Encoding.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>valor_credito</strong></td>
+                        <td>Numérico</td>
+                        <td><em>(Variable Objetivo)</em> El valor desembolsado del crédito.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Proyecto Machine Learning - Talento Tech</p>
+    </footer>
+
+</body>
+</html>
